@@ -2,6 +2,9 @@
 
 This jquery plugin will draw Flexible Line using canvas element. 
 
+[Demo](http://moniecorleone.github.io/Flexible-Line-Chart/FlexibleLineChart.html)
+
+
 ## Basic Usage
 
 ### HTML
