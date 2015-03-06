@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Flexible-line-chart by moniecorleone</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Flexible-line-chart</h1>
+          <h2></h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/moniecorleone/Flexible-Line-Chart/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/moniecorleone/Flexible-Line-Chart/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/moniecorleone/Flexible-Line-Chart" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="flexible-line-chart" class="anchor" href="#flexible-line-chart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flexible-Line-Chart</h1>
+
+<p>This jquery plugin will draw Flexible Line using canvas element. </p>
+
+<h2>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<h3>
+<a id="html" class="anchor" href="#html" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h3>
+
+<div class="highlight highlight-html"><pre>    &lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>linegraph<span class="pl-pds">"</span></span> <span class="pl-e">style</span>=<span class="pl-s1"><span class="pl-pds">"</span>width: 100%; height: 500px<span class="pl-pds">"</span></span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h3>
+<a id="jquery" class="anchor" href="#jquery" aria-hidden="true"><span class="octicon octicon-link"></span></a>jQuery</h3>
+
+<div class="highlight highlight-js"><pre>        $(<span class="pl-st">function</span> () {
+             <span class="pl-s">var</span> linedata <span class="pl-k">=</span> {
+            linecolor<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>#CCA300<span class="pl-pds">"</span></span>,
+            title<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Monday<span class="pl-pds">"</span></span>,
+            values<span class="pl-k">:</span> [
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>7:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">0</span>, Y<span class="pl-k">:</span> <span class="pl-c1">110.98</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>8:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">1</span>, Y<span class="pl-k">:</span> <span class="pl-c1">110.00</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>9:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">2</span>, Y<span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">114.00</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>10:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">3</span>, Y<span class="pl-k">:</span> <span class="pl-c1">110.25</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>11:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">4</span>, Y<span class="pl-k">:</span> <span class="pl-c1">118.56</span> }
+            ]
+        };
+        <span class="pl-s">var</span> linedata1 <span class="pl-k">=</span> {
+            linecolor<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>#3399FF<span class="pl-pds">"</span></span>,
+            title<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Tuesday<span class="pl-pds">"</span></span>,
+            values<span class="pl-k">:</span> [
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>7:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">0</span>, Y<span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">10.98</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>8:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">1</span>, Y<span class="pl-k">:</span> <span class="pl-c1">10.00</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>9:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">2</span>, Y<span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">14.00</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>10:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">3</span>, Y<span class="pl-k">:</span> <span class="pl-c1">10.25</span> },
+            { Xlabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>11:00<span class="pl-pds">"</span></span>, X<span class="pl-k">:</span> <span class="pl-c1">4</span>, Y<span class="pl-k">:</span> <span class="pl-c1">18.56</span> }
+            ]
+        };
+
+             $(<span class="pl-s1"><span class="pl-pds">"</span>#linegraph<span class="pl-pds">"</span></span>).FlexibleLineChart({
+                toolwidth<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>50<span class="pl-pds">"</span></span>,
+                toolheight<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>25<span class="pl-pds">"</span></span>,
+                axiscolor<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>#E6E6E6<span class="pl-pds">"</span></span>,
+                textcolor<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>#6E6E6E<span class="pl-pds">"</span></span>,
+                showlegends<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                data<span class="pl-k">:</span> [linedata,linedata1,linedata2,linedata3],
+                legendsize<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>80<span class="pl-pds">"</span></span>,
+                legendposition<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>bottom<span class="pl-pds">'</span></span>,
+                xaxislabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Days<span class="pl-pds">'</span></span>,
+                title<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Weekly Profit<span class="pl-pds">'</span></span>,
+                yaxislabel<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Profit in $<span class="pl-pds">'</span></span>
+            });
+        });</pre></div>
+
+<h3>
+<a id="copyright" class="anchor" href="#copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright</h3>
+
+<p>MIT-LICENCE</p>
+        </section>
+
+        <footer>
+          Flexible-line-chart is maintained by <a href="https://github.com/moniecorleone">moniecorleone</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
