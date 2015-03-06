@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .FlexibleLineChart #tip {
+            background-color: #f0f0f0;
+            border: 1px solid #d0d0d0;
+            position: absolute;
+            left: -200px;
+            top: 30px;
+        }
+        .FlexibleLineChart .linechartcanvas, .FlexibleLineChart #highlighter {
+            cursor: pointer;
+        }
+        .down-triangle {
+            width: 0;
+            height: 0;
+            border-top: 10px solid #d0d0d0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            position: absolute;
+            left: -200px;
+        }
+		.FlexibleLineChart 
+			{
+				position: relative;
+			}
+        .FlexibleLineChart #highlighter {
+            position: absolute;
+            left: -200px;
+        }
+        .Flexible-Line-Chart-holder {
+            float: left;
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #cecece;
+            /*padding: 6px;*/
+        }
+        .FlexibleLineChart .legendsli {
+            list-style: none;
+        }
+            .FlexibleLineChart .legendsli span {
+                float: left;
+                vertical-align: middle;
+            }
+                .FlexibleLineChart .legendsli span.legendindicator {
+                    position: relative;
+                    top: 5px;
+                }
+                    .FlexibleLineChart .legendsli span.legendindicator .line {
+                        width: 30px;
+                        height: 3px;
+                    }
+                    .FlexibleLineChart .legendsli span.legendindicator .circle {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 20px;
+                        position: relative;
+                        top: -5px;
+                        right: 20px;
+                    }
+        /******Starts::Horizontal Alignment of Legends******/
+        .line-chart-legends {
+            padding: 5px;
+            margin: 2px 0px;
+        }
+            .line-chart-legends ul {
+            }
+                .line-chart-legends ul li {
+                    display: inline;
+                    border-right: 1px solid #d6d7dd;
+                    float: left;
+                    padding: 10px;
+                }
+                    .line-chart-legends ul li:last-child {
+                        border-right: 0px;
+                    }
+            .line-chart-legends.vertical {
+                margin: 0px 10px;
+            }
+                .line-chart-legends.vertical ul li {
+                    display: block;
+                    border: 0px;
+                    border-bottom: 1px solid #d6d7dd;
+                }
+                    .line-chart-legends.vertical ul li:last-child {
+                        border-bottom: 0px;
+                    }
+        /******Starts::Horizontal Alignment of Legends******/
+        .line-chart-Header {
+            position: absolute;
+            font-size: 16px;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    <script src="FlexibleLineChart.js"></script>
+    <script>
+	 var linedata = {
+            linecolor: "#CCA300",
+            title: "Monday",
+            values: [
+            { Xlabel: "7:00", X: 0, Y: 110.98 },
+            { Xlabel: "8:00", X: 1, Y: 110.00 },
+            { Xlabel: "9:00", X: 2, Y: -114.00 },
+            { Xlabel: "10:00", X: 3, Y: 110.25 },
+            { Xlabel: "11:00", X: 4, Y: 118.56 },
+            { Xlabel: "12:00", X: 5, Y: 118.57 },
+            { Xlabel: "13:00", X: 6, Y: 114.00 },
+            { Xlabel: "14:00", X: 7, Y: 110.89 },
+            { Xlabel: "15:00", X: 8, Y: 112.57 },
+            { Xlabel: "16:00", X: 9, Y: 118.24 },
+            { Xlabel: "17:00", X: 10, Y: 118.00 },
+            { Xlabel: "18:00", X: 11, Y: 114.24 },
+            { Xlabel: "19:00", X: 12, Y: 110.58 },
+            { Xlabel: "20:00", X: 13, Y: 112.54 },
+            { Xlabel: "21:00", X: 14, Y: 118.00 },
+            { Xlabel: "22:00", X: 15, Y: 118.00 },
+            { Xlabel: "23:00", X: 16, Y: 114.89 },
+            { Xlabel: "0:00", X: 17, Y: -110.26 },
+            { Xlabel: "1:00", X: 18, Y: 118.89 },
+            { Xlabel: "2:00", X: 19, Y: 118.87 },
+            { Xlabel: "3:00", X: 20, Y: 114.00 },
+            { Xlabel: "4:00", X: 21, Y: 110.00 },
+            { Xlabel: "5:00", X: 22, Y: 18.87 },
+            { Xlabel: "6:00", X: 23, Y: -34.00 }
+            ]
+        };
+        var linedata1 = {
+            linecolor: "#3399FF",
+            title: "Tuesday",
+            values: [
+            { Xlabel: "7:00", X: 0, Y: -10.98 },
+            { Xlabel: "8:00", X: 1, Y: 10.00 },
+            { Xlabel: "9:00", X: 2, Y: -14.00 },
+            { Xlabel: "10:00", X: 3, Y: 10.25 },
+            { Xlabel: "11:00", X: 4, Y: 18.56 },
+            { Xlabel: "12:00", X: 5, Y: 18.57 },
+            { Xlabel: "13:00", X: 6, Y: 114.00 },
+            { Xlabel: "14:00", X: 7, Y: 10.89 },
+            { Xlabel: "15:00", X: 8, Y: 112.57 },
+            { Xlabel: "16:00", X: 9, Y: 18.24 },
+            { Xlabel: "17:00", X: 10, Y: 118.00 },
+            { Xlabel: "18:00", X: 11, Y: 14.24 },
+            { Xlabel: "19:00", X: 12, Y: 110.58 },
+            { Xlabel: "20:00", X: 13, Y: 112.54 },
+            { Xlabel: "21:00", X: 14, Y: 18.00 },
+            { Xlabel: "22:00", X: 15, Y: 18.00 },
+            { Xlabel: "23:00", X: 16, Y: 114.89 },
+            { Xlabel: "0:00", X: 17, Y: -110.26 },
+            { Xlabel: "1:00", X: 18, Y: 18.89 },
+            { Xlabel: "2:00", X: 19, Y: 18.87 },
+            { Xlabel: "3:00", X: 20, Y: 114.00 },
+            { Xlabel: "4:00", X: 21, Y: 10.00 },
+            { Xlabel: "5:00", X: 22, Y: -18.87 },
+            { Xlabel: "6:00", X: 23, Y: 34.00 }
+            ]
+        };
+        var linedata2 = {
+            linecolor: "#00CC66",
+            title: "Wednesday",
+            values: [
+            { Xlabel: "7:00", X: 0, Y: 30.00 },
+            { Xlabel: "8:00", X: 1, Y: -10.00 },
+            { Xlabel: "9:00", X: 2, Y: 14.00 },
+            { Xlabel: "10:00", X: 3, Y: 34.00 },
+            { Xlabel: "11:00", X: 4, Y: 47.25 },
+            { Xlabel: "12:00", X: 5, Y: 18.56 },
+            { Xlabel: "13:00", X: 6, Y: 68.57 },
+            { Xlabel: "14:00", X: 7, Y: 74.00 },
+            { Xlabel: "15:00", X: 8, Y: 0.00 },
+            { Xlabel: "16:00", X: 9, Y: 42.57 },
+            { Xlabel: "17:00", X: 10, Y: 98.24 },
+            { Xlabel: "18:00", X: 11, Y: -108.00 },
+            { Xlabel: "19:00", X: 12, Y: 14.24 },
+            { Xlabel: "20:00", X: 13, Y: 14.58 },
+            { Xlabel: "21:00", X: 14, Y: 11.54 },
+            { Xlabel: "22:00", X: 15, Y: 48.00 },
+            { Xlabel: "23:00", X: 16, Y: 58.00 },
+            { Xlabel: "0:00", X: 17, Y: 34.89 },
+            { Xlabel: "1:00", X: 18, Y: -10.26 },
+            { Xlabel: "2:00", X: 19, Y: 148.89 },
+            { Xlabel: "3:00", X: 20, Y: 138.87 },
+            { Xlabel: "4:00", X: 21, Y: 164.00 },
+            { Xlabel: "5:00", X: 22, Y: 18.87 },
+            { Xlabel: "6:00", X: 23, Y: 34.00 }
+            ]
+        };
+        var linedata3 = {
+            linecolor: "#FF99CC",
+            title: "Thursday",
+            values: [
+            { Xlabel: "7:00", X: 0, Y: 0.00 },
+            { Xlabel: "8:00", X: 1, Y: 20.00 },
+            { Xlabel: "9:00", X: 2, Y: -40.00 },
+            { Xlabel: "10:00", X: 3, Y: 34.00 },
+            { Xlabel: "11:00", X: 4, Y: 40.25 },
+            { Xlabel: "12:00", X: 5, Y: 28.56 },
+            { Xlabel: "13:00", X: 6, Y: 18.57 },
+            { Xlabel: "14:00", X: 7, Y: 34.00 },
+            { Xlabel: "15:00", X: 8, Y: 40.89 },
+            { Xlabel: "16:00", X: 9, Y: 12.57 },
+            { Xlabel: "17:00", X: 10, Y: 28.24 },
+            { Xlabel: "18:00", X: 11, Y: -18.00 },
+            { Xlabel: "19:00", X: 12, Y: 34.24 },
+            { Xlabel: "20:00", X: 13, Y: 40.58 },
+            { Xlabel: "21:00", X: 14, Y: 12.54 },
+            { Xlabel: "22:00", X: 15, Y: 28.00 },
+            { Xlabel: "23:00", X: 16, Y: 18.00 },
+            { Xlabel: "0:00", X: 17, Y: -34.89 },
+            { Xlabel: "1:00", X: 18, Y: 40.26 },
+            { Xlabel: "2:00", X: 19, Y: 28.89 },
+            { Xlabel: "3:00", X: 20, Y: 18.87 },
+            { Xlabel: "4:00", X: 21, Y: 34.00 },
+            { Xlabel: "5:00", X: 22, Y: 18.87 },
+            { Xlabel: "6:00", X: 23, Y: 34.00 }
+            ]
+        };
+        
+        
+        $(function () {
+            $("#linegraph").FlexibleLineChart({
+                toolwidth: "50",
+                toolheight: "25",
+                axiscolor: "#E6E6E6",
+                textcolor: "#6E6E6E",
+                showlegends: true,
+                data: [linedata,linedata1,linedata2,linedata3],
+                legendsize: "80",
+                legendposition: 'bottom',
+                xaxislabel: 'Days',
+                title: 'Weekly Profit',
+                yaxislabel: 'Profit in $'
+            });
+        });
+        function fire() {
+            $("#linegraph").FlexibleLineChart('axiscolor', '#333');
+            $("#linegraph").FlexibleLineChart('data', [linedata1,linedata2]);
+            $("#linegraph").FlexibleLineChart('reload', true);
+        }
+		
+		function refresh()
+		{
+		window.location.reload();
+		}
+        $(window).resize(function () {
+            $("#linegraph").FlexibleLineChart('reload', true);
+        });
+    </script>
+</head>
+<body>
+    <input type="button" onclick="fire();" value="reload" />
+	<input type="button" onclick="refresh();" value="refresh" />
+    <div id="linegraph" style="width: 100%; height: 500px">
+    </div>
+
+</body>
+</html>
